@@ -19,7 +19,8 @@ echo ""
 echo "*** CHECK INPUT PARAMETERS ***"
 wantedBranch="$1"
 if [ ${#wantedBranch} -eq 0 ]; then
-  wantedBranch="master"
+#  wantedBranch="master"
+  wantedBranch="1.6"
 else
   if [ "${wantedBranch}" == "-h" -o "${wantedBranch}" == "--help" ]; then
      echo "Usage: [branch] [github user] [root partition] [LCD screen installed true|false] [Wifi disabled true|false]"
@@ -42,7 +43,8 @@ echo "will use code from user --> '${githubUser}'"
 # 3rd optional parameter is the root partition
 rootPartition="$3"
 if [ ${#rootPartition} -eq 0 ]; then
-  rootPartition="/dev/mmcblk0p2"
+#  rootPartition="/dev/mmcblk0p2"
+  rootPartition="/"
 fi
 echo "will use root partition --> '${rootPartition}'"
 
