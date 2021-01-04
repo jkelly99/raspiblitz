@@ -34,7 +34,8 @@ echo "will use code from branch --> '${wantedBranch}'"
 # if 2nd parameter is used - 1st is mandatory
 githubUser="$2"
 if [ ${#githubUser} -eq 0 ]; then
-  githubUser="rootzoll"
+#  githubUser="rootzoll"
+  githubUser="jkelly99"
 fi
 echo "will use code from user --> '${githubUser}'"
 
@@ -59,7 +60,8 @@ echo "will activate LCD screen --> '${lcdInstalled}'"
 # 5th optional parameter is Wifi
 disableWifi="$5"
 if [ ${#disableWifi} -eq 0 ]; then
-  disableWifi="false"
+#  disableWifi="false"
+  disableWifi="true"
 else
   if [ "${disableWifi}" != "true" ]; then
      disableWifi="false"
@@ -113,7 +115,8 @@ baseImage="?"
 isDietPi=$(uname -n | grep -c 'DietPi')
 isRaspbian=$(cat /etc/os-release 2>/dev/null | grep -c 'Raspbian')
 isArmbian=$(cat /etc/os-release 2>/dev/null | grep -c 'Debian')
-isUbuntu=$(cat /etc/os-release 2>/dev/null | grep -c 'Ubuntu')
+#isUbuntu=$(cat /etc/os-release 2>/dev/null | grep -c 'Ubuntu')
+isUbuntu=$(cat /etc/os-release 2>/dev/null | grep -c 'Debian')
 isNvidia=$(uname -a | grep -c 'tegra')
 if [ ${isRaspbian} -gt 0 ]; then
   baseImage="raspbian"
@@ -373,7 +376,7 @@ sudo apt install -y vnstat
 sudo apt install -y parted dosfstools
 
 # prepare for BTRFS data drive raid
-sudo apt install -y btrfs-progs btrfs-tools
+#sudo apt install -y btrfs-progs btrfs-tools
 
 # network tools
 sudo apt install -y autossh telnet
@@ -457,8 +460,8 @@ echo "*** SWAP FILE ***"
 # based on https://github.com/Stadicus/guides/blob/master/raspibolt/raspibolt_20_pi.md#moving-the-swap-file
 # but just deactivating and deleting old (will be created alter when user adds HDD)
 
-sudo dphys-swapfile swapoff
-sudo dphys-swapfile uninstall
+#sudo dphys-swapfile swapoff
+#sudo dphys-swapfile uninstall
 
 echo ""
 echo "*** INCREASE OPEN FILE LIMIT ***"
