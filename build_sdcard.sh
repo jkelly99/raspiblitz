@@ -367,7 +367,8 @@ echo "*** SOFTWARE UPDATE ***"
 # based on https://github.com/Stadicus/guides/blob/master/raspibolt/raspibolt_20_pi.md#software-update
 
 # installs like on RaspiBolt
-sudo apt install -y htop git curl bash-completion vim jq dphys-swapfile bsdmainutils
+#sudo apt install -y htop git curl bash-completion vim jq dphys-swapfile bsdmainutils
+sudo apt install -y htop git curl bash-completion vim jq bsdmainutils
 
 # installs bandwidth monitoring for future statistics
 sudo apt install -y vnstat
