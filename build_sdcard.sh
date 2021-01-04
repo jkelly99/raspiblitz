@@ -114,7 +114,7 @@ echo "Detect Base Image ..."
 baseImage="?"
 isDietPi=$(uname -n | grep -c 'DietPi')
 isRaspbian=$(cat /etc/os-release 2>/dev/null | grep -c 'Raspbian')
-isArmbian=$(cat /etc/os-release 2>/dev/null | grep -c 'Debian')
+#isArmbian=$(cat /etc/os-release 2>/dev/null | grep -c 'Debian')
 #isUbuntu=$(cat /etc/os-release 2>/dev/null | grep -c 'Ubuntu')
 isUbuntu=$(cat /etc/os-release 2>/dev/null | grep -c 'Debian')
 isNvidia=$(uname -a | grep -c 'tegra')
