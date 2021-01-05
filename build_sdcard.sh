@@ -44,7 +44,6 @@ echo "will use code from user --> '${githubUser}'"
 rootPartition="$3"
 if [ ${#rootPartition} -eq 0 ]; then
   rootPartition="/dev/mmcblk0p2"
-#  rootPartition="/"
 fi
 echo "will use root partition --> '${rootPartition}'"
 
