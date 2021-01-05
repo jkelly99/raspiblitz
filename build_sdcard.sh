@@ -44,13 +44,15 @@ echo "will use code from user --> '${githubUser}'"
 rootPartition="$3"
 if [ ${#rootPartition} -eq 0 ]; then
   rootPartition="/dev/mmcblk0p2"
+#  rootPartition="/"
 fi
 echo "will use root partition --> '${rootPartition}'"
 
 # 4th optional parameter is the LCD screen
 lcdInstalled="$4"
 if [ ${#lcdInstalled} -eq 0 ]; then
-  lcdInstalled="true"
+#  lcdInstalled="true"
+  lcdInstalled="false"
 else
   if [ "${lcdInstalled}" != "false" ]; then
      lcdInstalled="true"
@@ -122,9 +124,9 @@ isNvidia=$(uname -a | grep -c 'tegra')
 if [ ${isRaspbian} -gt 0 ]; then
   baseImage="raspbian"
 fi
-if [ ${isArmbian} -gt 0 ]; then
-  baseImage="armbian"
-fi
+#if [ ${isArmbian} -gt 0 ]; then
+#  baseImage="armbian"
+#fi
 if [ ${isUbuntu} -gt 0 ]; then
 baseImage="ubuntu"
 fi
@@ -298,15 +300,15 @@ fi
 # see https://github.com/rootzoll/raspiblitz/issues/394#issuecomment-471535483
 echo "/var/log/syslog" >> ./rsyslog
 echo "{" >> ./rsyslog
-echo "	rotate 7" >> ./rsyslog
-echo "	daily" >> ./rsyslog
-echo "	missingok" >> ./rsyslog
-echo "	notifempty" >> ./rsyslog
-echo "	delaycompress" >> ./rsyslog
-echo "	compress" >> ./rsyslog
-echo "	postrotate" >> ./rsyslog
-echo "		invoke-rc.d rsyslog rotate > /dev/null" >> ./rsyslog
-echo "	endscript" >> ./rsyslog
+echo "  rotate 7" >> ./rsyslog
+echo "  daily" >> ./rsyslog
+echo "  missingok" >> ./rsyslog
+echo "  notifempty" >> ./rsyslog
+echo "  delaycompress" >> ./rsyslog
+echo "  compress" >> ./rsyslog
+echo "  postrotate" >> ./rsyslog
+echo "          invoke-rc.d rsyslog rotate > /dev/null" >> ./rsyslog
+echo "  endscript" >> ./rsyslog
 echo "}" >> ./rsyslog
 echo "" >> ./rsyslog
 echo "/var/log/mail.info" >> ./rsyslog
@@ -348,16 +350,16 @@ echo "/var/log/cron.log" >> ./rsyslog
 echo "/var/log/debug" >> ./rsyslog
 echo "/var/log/messages" >> ./rsyslog
 echo "{" >> ./rsyslog
-echo "	rotate 4" >> ./rsyslog
-echo "	weekly" >> ./rsyslog
-echo "	missingok" >> ./rsyslog
-echo "	notifempty" >> ./rsyslog
-echo "	compress" >> ./rsyslog
-echo "	delaycompress" >> ./rsyslog
-echo "	sharedscripts" >> ./rsyslog
-echo "	postrotate" >> ./rsyslog
-echo "		invoke-rc.d rsyslog rotate > /dev/null" >> ./rsyslog
-echo "	endscript" >> ./rsyslog
+echo "  rotate 4" >> ./rsyslog
+echo "  weekly" >> ./rsyslog
+echo "  missingok" >> ./rsyslog
+echo "  notifempty" >> ./rsyslog
+echo "  compress" >> ./rsyslog
+echo "  delaycompress" >> ./rsyslog
+echo "  sharedscripts" >> ./rsyslog
+echo "  postrotate" >> ./rsyslog
+echo "          invoke-rc.d rsyslog rotate > /dev/null" >> ./rsyslog
+echo "  endscript" >> ./rsyslog
 echo "}" >> ./rsyslog
 sudo mv ./rsyslog /etc/logrotate.d/rsyslog
 sudo chown root:root /etc/logrotate.d/rsyslog
